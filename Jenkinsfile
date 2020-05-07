@@ -1,6 +1,6 @@
 node {
     stage ('git clone'){
-        git 'https://github.com/PramodPolo/clearwater-heat.git'
+        git 'https://github.com/kesavapandiyan/clearwater-heat.git'
     }
     
     
