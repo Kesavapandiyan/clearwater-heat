@@ -1,0 +1,31 @@
+---
+- name: play1
+  hosts: group1
+  become: yes
+  become_user: root
+  tasks:
+  - name: copy
+    copy: src=/var/lib/jenkins/workspace/Kesav_test/{{ item }} dest=/root/clearwater_folder/
+    with_items: 
+     - bono.yaml
+     - clearwater.yaml
+     - dime.yaml
+     - dns.yaml
+     - ellis.yaml
+     - homer.yaml
+     - network.yaml
+     - README.md
+     - security-groups.yaml
+     - sprout.yaml
+     - testrc.yaml
+     - vellum.yaml
+     - script_python.py 
+  - name: command
+    command: python /root/clearwater_folder/script_python.py
+    register: out
+  - debug: var=out.stdout_lines
+
+  - name: DeletePythonScript
+    file: 
+     path: /root/clearwater_folder/script_python.py
+     state: absent
